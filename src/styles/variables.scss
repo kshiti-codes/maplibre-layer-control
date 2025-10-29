@@ -1,0 +1,51 @@
+// Colors
+$color-primary: #0066cc;
+$color-primary-hover: #0052a3;
+$color-text: #333333;
+$color-text-secondary: #666666;
+$color-text-disabled: #999999;
+$color-background: #ffffff;
+$color-background-secondary: #f5f5f5;
+$color-background-hover: #e8e8e8;
+$color-border: #dddddd;
+$color-border-focus: #0066cc;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 350ms ease;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-modal: 2000;
+$z-index-tooltip: 3000;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-touch-table: 1920px;
+
+// Touch targets (for touch tables)
+$touch-target-min: 44px;
+$touch-target-large: 60px;
