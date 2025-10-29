@@ -27,11 +27,9 @@ const emit = defineEmits<{
 
 // Composable for map operations
 const { 
-  mapReady, 
   toggleLayerVisibility, 
   updateLayerOpacity, 
-  zoomToLayer,
-  updateLayerOrder 
+  zoomToLayer, 
 } = useMapLayers(props.map);
 
 // Local state
@@ -242,6 +240,7 @@ const clearSearch = () => {
   </div>
 </template>
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .layer-control {
   width: 100%;
   max-width: 320px;

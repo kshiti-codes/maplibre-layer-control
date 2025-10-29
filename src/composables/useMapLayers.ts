@@ -1,4 +1,4 @@
-import { ref, watch, onUnmounted } from 'vue';
+import { ref } from 'vue';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { LayerConfig } from '../types';
 

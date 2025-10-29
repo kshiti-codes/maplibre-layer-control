@@ -3,19 +3,13 @@ import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 
 export default defineConfig({
+  base: 'repositories/maplibre-layer-control/',
   plugins: [vue()],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/styles/variables.scss";`
-      }
-    }
   },
   build: {
     lib: {

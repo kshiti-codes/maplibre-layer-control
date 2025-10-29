@@ -49,19 +49,6 @@ const toggleOpacitySlider = () => {
   showingOpacity.value = !showingOpacity.value;
 };
 
-// Get icon based on layer type
-const layerIcon = computed(() => {
-  const icons: Record<string, string> = {
-    'raster': '🗺️',
-    'vector': '📍',
-    'fill': '⬜',
-    'line': '〰️',
-    'circle': '⚫',
-    'symbol': '📌',
-    'heatmap': '🔥',
-  };
-  return icons[props.layer.type] || '📄';
-});
 </script>
 
 <template>
@@ -161,6 +148,7 @@ const layerIcon = computed(() => {
   </div>
 </template>
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .layer-item {
   border: 1px solid $color-border;
   border-radius: $radius-md;

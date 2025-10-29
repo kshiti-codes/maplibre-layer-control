@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import type { LayerGroup, LayerConfig } from '../types';
 import LayerItem from './LayerItem.vue';
 
@@ -130,6 +130,7 @@ const handleLayerInfo = (layer: LayerConfig) => {
   </div>
 </template>
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .layer-group {
   margin-bottom: $spacing-md;
 
