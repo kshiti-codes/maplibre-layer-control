@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { Map, NavigationControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import LayerControl from '@/components/LayerControl.vue';
-import type { LayerConfig, LayerGroup } from '@/types';
+import LayerControl from '../src/components/LayerControl.vue';
+import type { LayerConfig, LayerGroup } from '../src/types';
 
 const mapContainer = ref<HTMLElement>();
 const map = ref<Map>();
@@ -22,6 +22,7 @@ const layers = ref<LayerConfig[]>([
     type: 'raster',
     source: 'osm-source',
     groupId: 'basemaps',
+    opacityControl: false,
     metadata: {
       description: 'Standard OpenStreetMap base layer',
       source: 'OpenStreetMap Contributors',
@@ -36,6 +37,7 @@ const layers = ref<LayerConfig[]>([
     type: 'raster',
     source: 'satellite-source',
     groupId: 'basemaps',
+    opacityControl: false,
     metadata: {
       description: 'ESRI World Imagery satellite basemap',
       source: 'ESRI',
@@ -50,6 +52,7 @@ const layers = ref<LayerConfig[]>([
     type: 'raster',
     source: 'terrain-source',
     groupId: 'basemaps',
+    opacityControl: false,
     metadata: {
       description: 'Terrain basemap with hillshading',
       source: 'OpenTopoMap',
@@ -106,6 +109,7 @@ const groups = ref<LayerGroup[]>([
     name: 'Base Maps',
     expanded: true,
     groupToggle: false,
+    exclusive: true,
     layers: layers.value.filter(l => l.groupId === 'basemaps'),
   },
   {
@@ -113,6 +117,7 @@ const groups = ref<LayerGroup[]>([
     name: 'Overlays',
     expanded: true,
     groupToggle: true,
+    exclusive: false,
     layers: layers.value.filter(l => l.groupId === 'overlays'),
   },
   {
@@ -336,9 +341,9 @@ const handleLayerInfo = (layerId: string) => {
 
   // Special info for real-time layers
   if (layerId === 'earthquakes') {
-    message += `\n📊 Data Updates: Every minute\n`;
-    message += `🌍 Coverage: Global\n`;
-    message += `⚡ Real-time from USGS\n`;
+    message += `\n Data Updates: Every minute\n`;
+    message += `Coverage: Global\n`;
+    message += `Real-time from USGS\n`;
     message += `\nClick on earthquake markers for details!`;
   }
 
@@ -374,7 +379,7 @@ const handleLayerVisibilityChange = (layerId: string, visible: boolean) => {
     <!-- Header -->
     <header class="simple-demo__header">
       <div class="simple-demo__title">
-        <h1>🗺️ MapLibre Layer Control</h1>
+        <h1>Real-time Layer Control</h1>
         <p>Production-Ready Integration with Real APIs</p>
       </div>
     </header>
@@ -382,7 +387,7 @@ const handleLayerVisibilityChange = (layerId: string, visible: boolean) => {
     <!-- Info Banner -->
     <div class="info-banner">
       <div class="info-banner__content">
-        <h3>📡 Connected to Real Data Sources:</h3>
+        <h3>Connected to Real Data Sources:</h3>
         <ul>
           <li><strong>OpenStreetMap</strong> - Street map tiles</li>
           <li><strong>ESRI World Imagery</strong> - Satellite imagery</li>
@@ -413,16 +418,16 @@ const handleLayerVisibilityChange = (layerId: string, visible: boolean) => {
 
     <!-- Instructions -->
     <div class="instructions">
-      <h4>🎯 Try These Features:</h4>
+      <h4>Try These Features:</h4>
       <ul>
-        <li>✅ <strong>Switch basemaps</strong> - Toggle between Street, Satellite, Terrain</li>
-        <li>🌍 <strong>Show borders</strong> - See country boundaries</li>
-        <li>🏙️ <strong>View cities</strong> - Major population centers</li>
-        <li>⚡ <strong>Enable earthquakes</strong> - Real USGS data (click markers for details!)</li>
-        <li>🎚️ <strong>Adjust opacity</strong> - Make layers transparent</li>
+        <li><strong>Switch basemaps</strong> - Toggle between Street, Satellite, Terrain</li>
+        <li><strong>Show borders</strong> - See country boundaries</li>
+        <li><strong>View cities</strong> - Major population centers</li>
+        <li><strong>Enable earthquakes</strong> - Real USGS data (click markers for details!)</li>
+        <li><strong>Adjust opacity</strong> - Make layers transparent</li>
       </ul>
       <div class="instructions__note">
-        <strong>💡 Note:</strong> All data is loaded from real public APIs - no mock data!
+        <strong>Note:</strong> All data is loaded from real public APIs!
       </div>
     </div>
   </div>
@@ -430,7 +435,7 @@ const handleLayerVisibilityChange = (layerId: string, visible: boolean) => {
 
 <style lang="scss" scoped>
 .simple-demo {
-  width: 100vw;
+  width: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -442,8 +447,9 @@ const handleLayerVisibilityChange = (layerId: string, visible: boolean) => {
   background: linear-gradient(135deg, #000000 0%, #3f3e3f 100%);
   color: white;
   padding: 20px 30px;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  text-align: center;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 

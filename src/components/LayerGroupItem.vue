@@ -121,6 +121,8 @@ const handleLayerInfo = (layer: LayerConfig) => {
         :show-opacity="showOpacity"
         :show-info="showInfo"
         :show-zoom-to="showZoomTo"
+        :exclusive="group.exclusive"
+        :exclusive-group-name="group.id"
         @visibility-change="handleLayerVisibilityChange"
         @opacity-change="handleLayerOpacityChange"
         @zoom="handleLayerZoom"

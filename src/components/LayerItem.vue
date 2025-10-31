@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import type { LayerConfig } from '../types';
 
 interface Props {
@@ -7,12 +7,15 @@ interface Props {
   showOpacity?: boolean;
   showInfo?: boolean;
   showZoomTo?: boolean;
+  exclusive?: boolean; 
+  exclusiveGroupName?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   showOpacity: true,
   showInfo: true,
   showZoomTo: true,
+  exclusive: false,
 });
 
 const emit = defineEmits<{
@@ -60,12 +63,14 @@ const toggleOpacitySlider = () => {
       <!-- Visibility Checkbox -->
       <label class="layer-item__checkbox">
         <input
-          type="checkbox"
+          :type="exclusive ? 'radio' : 'checkbox'"
+          :name="exclusive ? exclusiveGroupName : undefined"
           :checked="localVisible"
           @change="toggleVisibility"
           :disabled="layer.toggleable === false"
         />
-        <span class="layer-item__checkbox-custom"></span>
+        <span class="layer-item__checkbox-custom"
+        :class="{ 'layer-item__checkbox-custom--radio': exclusive }"></span>
       </label>
 
       <!-- Layer Name -->
@@ -84,7 +89,7 @@ const toggleOpacitySlider = () => {
           :aria-label="'Adjust opacity'"
         >
           <svg width="16" height="16" viewBox="0 0 16 16">
-            <path d="M8 2v12M4 8h8" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="2"/>
           </svg>
         </button>
 
@@ -228,6 +233,10 @@ const toggleOpacitySlider = () => {
       opacity: 0;
       transition: opacity $transition-fast;
     }
+  }
+
+  &__checkbox-custom--radio {
+    display: none;
   }
 
   // Icon

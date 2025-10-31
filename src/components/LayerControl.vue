@@ -165,7 +165,7 @@ const clearSearch = () => {
         :aria-label="isCollapsed ? 'Expand layers' : 'Collapse layers'"
       >
         <svg 
-          width="16" 
+          width="20" 
           height="16" 
           viewBox="0 0 16 16"
           :style="{ transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)' }"

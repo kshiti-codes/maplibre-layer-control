@@ -127,6 +127,9 @@ export interface LayerGroup {
   
   /** Whether all layers in group can be toggled together */
   groupToggle?: boolean;
+
+  /** Whether all layers in group are exclusive */
+  exclusive?: boolean;
 }
 
 /**
