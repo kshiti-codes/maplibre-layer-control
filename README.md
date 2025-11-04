@@ -384,8 +384,8 @@ Please open an issue to discuss major changes before submitting a PR.
 
 **Kshiti Tushar Patel**
 - Portfolio: [kshitipatel.com](https://kshitipatel.com)
-- LinkedIn: [Kshiti Patel](https://linkedin.com/in/kshiti-patel)
-- GitHub: [@kshiti-codes](https://github.com/kshiti-codes)
+- LinkedIn: [Kshiti Patel](https://www.linkedin.com/in/kshitipatel1999/)
+- GitHub: [@kshiti-codes](https://github.com/kshiti-codes/)
 - Email: kshiti.de@gmail.com
 
 ## Acknowledgments
