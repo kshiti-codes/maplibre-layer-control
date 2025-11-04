@@ -394,12 +394,6 @@ Please open an issue to discuss major changes before submitting a PR.
 - UKIS framework integration case study
 - Special thanks to the MapLibre GL JS and Vue.js communities
 
-## esearch & Publications
-
-This component is documented in the case study:  
-**"Reusable Geospatial Layer Management Approach in Earth Observation Web Applications"**
-
-For detailed methodology, architecture patterns, and performance analysis, refer to the research documentation included in this repository.
 
 ---
 
