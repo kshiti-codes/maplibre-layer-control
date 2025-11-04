@@ -380,10 +380,6 @@ Contributions are welcome! This project follows clean code principles and emphas
 
 Please open an issue to discuss major changes before submitting a PR.
 
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
 ## Author
 
 **Kshiti Tushar Patel**
